@@ -36,7 +36,7 @@ class BikeShopsViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: GlobalConstants.NOTIFY_BIKE_SHOPS_UPDATED), object: nil, queue: nil) {  notification in
             self.initDataSource()
         }
-        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tappedOutside)))
+//        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tappedOutside)))
     }
     
     @objc func tappedOutside() {
@@ -145,7 +145,7 @@ extension BikeShopsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -188,6 +188,11 @@ extension BikeShopsViewController: UITableViewDelegate, UITableViewDataSource {
             title?.text = "PHONE:"
             content?.text = rowData?.phone
             break
+        case 4:
+            title?.text = "WEBSITE:"
+//            content?.text = rowData?.url
+            content?.text = "Click for website"
+            break
         default:
             break
         }
@@ -195,6 +200,12 @@ extension BikeShopsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 4) {
+            if let urlString = detailData?.url,
+                let url = URL(string: urlString) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

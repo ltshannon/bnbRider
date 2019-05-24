@@ -40,7 +40,7 @@ class GroupRidesViewController: UIViewController {
             self.initDataSource()
         }
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tappedOutside)))
+ //       self.view.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(tappedOutside)))
     }
     
     @objc func tappedOutside() {
@@ -155,7 +155,9 @@ extension GroupRidesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+//        return 9
+// Remove Add Review/Suggest Correction
+        return 8
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

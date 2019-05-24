@@ -47,15 +47,12 @@ extension BikeShopModel {
                     var model: BikeShopModel
                     model = BikeShopModel.init()
                     
-                    if let street = (row["gsx$street"] as? [String:String])?["$t"],
-                        let city = (row["gsx$city"] as? [String:String])?["$t"],
-                        let state = (row["gsx$state"] as? [String:String])?["$t"],
-                        let zip = (row["gsx$zip"] as? [String:String])?["$t"] {
-                        model.location = street + ", " + city + ", " + state + ", " + zip
+                    if let address = (row["gsx$address"] as? [String:String])?["$t"] {
+                        model.location = address
                     }
                     
                     model.phone = (row["gsx$phone"] as? [String:String])?["$t"]
-                    model.name = (row["gsx$shopname"] as? [String:String])?["$t"]
+                    model.name = (row["gsx$name"] as? [String:String])?["$t"]
                     model.url = (row["gsx$website"] as? [String:String])?["$t"]
                     
                     if let lat = (row["gsx$latitude"] as? [String:String])?["$t"],
